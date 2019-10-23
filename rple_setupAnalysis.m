@@ -11,8 +11,6 @@ subjs_2 = {'VPfah','VPfai','VPfaj','VPfak','VPfal','VPfam','VPfan',...
            'VPfbj','VPfbk','VPfbl','VPfbm','VPfbn','VPfbo','VPfbp',...
            'VPfbq','VPfbr','VPfbs','VPfbt','VPfbu','VPfbv','VPfbw',...
            'VPfbx','VPfby','VPfbz'};
-session_name = [repmat({'TrafficLight'},1,length(subjs_1))...
-                repmat({'ReadinessFeedback'},1,length(subjs_2))];
 subjs_all = cat(2,subjs_1,subjs_2);
 Ns = length(subjs_all);
 
@@ -25,6 +23,8 @@ opt.clab_base = {'F1','Fz','F2',...
                  'CP3','CP1','CPz','CP2','CP4',...
                  'P1','Pz','P2'};
 opt.ival_baseln = [-1500 -1400];
+opt.baseln_len = 100;
+opt.baseln_pos = 'beginning';
 opt.ival_fv = [-1500 -1400;
                -1400 -1300;
                -1300 -1200;
@@ -40,7 +40,7 @@ opt.ival_fv = [-1500 -1400;
                -300   -200;
                -200   -100;
                -100      0];
-opt.fv_window = [opt.ival_fv(1)-10 0];
+opt.fv_window = [opt.ival_fv(1) opt.ival_fv(end)];
 opt.ival_amp = [-200 0];
 
 

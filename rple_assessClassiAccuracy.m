@@ -5,7 +5,7 @@ global opt
 
 cnt = proc_selectChannels(cnt,opt.clab_select);
 fv = proc_segmentation(cnt,mrk,opt.fv_window);
-fv = proc_baseline(fv,opt.ival_baseln);
+fv = proc_baseline(fv,opt.baseln_len,opt.baseln_pos);
 fv = proc_jumpingMeans(fv,opt.ival_fv);
 fv = proc_flaten(fv);
 

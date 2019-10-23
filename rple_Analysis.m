@@ -29,4 +29,4 @@ Cout = proc_slidingClassification(cnt,mrk);
 rple_visualizeCout(Cout);
 
 %% estimate detection rates
-rple_estimateDetectionRates(Cout,.5);
+R = rple_estimateDetectionRates(Cout,.5);

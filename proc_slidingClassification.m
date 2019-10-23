@@ -15,10 +15,9 @@ for ii = 1:n_trial
         %% train
         mrk_train = mrk_selectEvents(mrk,'not',i_trial(:,ii));
         mrk_train = mrk_selectClasses(mrk_train,'trial start','movement onset');
-        fv = proc_segmentation(cnt,mrk_train,opt.ival_erp);
+        fv = proc_segmentation(cnt,mrk_train,opt.fv_window);
         fv = proc_baseline(fv,opt.baseln_len,opt.baseln_pos);
-        fv = proc_rejectArtifactsMaxMin(fv,opt.art_minmax);
-        fv = proc_jumpingMeans(fv,opt.ivals_fv);
+        fv = proc_jumpingMeans(fv,opt.ival_fv);
         fv = proc_flaten(fv);
         C = train_RLDAshrink(fv.x,fv.y);
     end

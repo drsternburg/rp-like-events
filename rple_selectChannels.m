@@ -4,10 +4,11 @@ function rple_selectChannels(cnt,mrk,mnt)
 global opt
 
 %% get amplitudes
+mrk = mrk_selectClasses(mrk,{'trial start','movement onset'});
 epo = proc_segmentation(cnt,mrk,opt.fv_window);
-epo = proc_baseline(epo,opt.ival_baseln);
+epo = proc_baseline(epo,opt.baseln_len,opt.baseln_pos);
 rsq = proc_rSquareSigned(epo,'Stats',1);
-epo_ = proc_selectChannels(epo,opt.cfy_rp.clab_base);
+epo_ = proc_selectChannels(epo,opt.clab_base);
 amp = proc_meanAcrossTime(epo_,opt.ival_amp);
 
 %% channel selection

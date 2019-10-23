@@ -1,8 +1,8 @@
 
-function rple_estimateDetectionRates(C,beta)
+function R = rple_estimateDetectionRates(C,beta)
 
 %% define possible threshold range
-x_all = cellfun(@(f)getfield(f,'x'),C,'UniformOutput',false);
+x_all = cellfun(@(f)f.x,C,'UniformOutput',false);
 x_all = [x_all{:}];
 thresh = linspace(0,prctile(x_all,99.5),100);
 
